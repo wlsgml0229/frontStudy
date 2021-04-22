@@ -15,7 +15,7 @@ age=6;
 age++;
 console.log(age);
 var age;
-
+//7 출력
 
 var name ;
 console.log(name);

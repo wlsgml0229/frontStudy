@@ -29,26 +29,26 @@ let a = 6;
 //5의 배수입니다
 //5
 
-// switch (a % 5) {
-//      case 0 : {
-//          console.log('5의 배수입니다');
-//      }
-//     default: 
-//         console.log(a);
-// }
+switch (a % 5) {
+     case 0 : {
+         console.log('5의 배수입니다');
+     }
+    default: 
+        console.log(a);
+}
 
 //만약에 해당 블럭이 실행된 후 다음 블럭을 거치지 않고 switch 문을 나가고 싶다면, 
 // case문 안에서 break;를 실행한다
 
-// switch(a % 5) {
-//     case 0 :{
-//         console.log('5의 배수입니다.');
-//         break;
-//     }
-//     default: {
-//         console.log(a);
-//     }
-// }
+switch(a % 5) {
+    case 0 :{
+        console.log('5의 배수입니다.');
+        break;
+    }
+    default: {
+        console.log(a);
+    }
+}
 
 //break와 case문의 순서를 잘 조정하여, 원하는 코드를 만들어 낼 수 있도록 이해하는것이 중요함
 

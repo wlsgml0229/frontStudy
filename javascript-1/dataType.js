@@ -25,23 +25,23 @@ console.log(isFalse, typeof isFalse);
 
 //생성자 함수를 통해 생성 가능하지만 쓰지않는 방법임
 
-// const a = new Boolean(false);
-// console.log(a, typeof a);
+const a = new Boolean(false);
+console.log(a, typeof a);
 //[Boolean:false] 'object'
 
 //객체로 인식되기 때문에 a가 실행 되게 된다.
-// if(a) {
-//     console.log('false');
-// }
+if(a) {
+    console.log('false');
+}
 
-// const b = Boolean(false);
+const b = Boolean(false);
 
-// console.log(b, typeof b);
+console.log(b, typeof b);
 
 //아래 if문은 찍히지 않음
-// if (b) {
-//     console.log('false?')
-// }
+if (b) {
+    console.log('false?')
+}
 
 //Null
 //비어있는 값

@@ -16,7 +16,11 @@ function B(name, age) {
 
 const b = new B(); //undefined undefined
 const c = new B('Mark',22); // Mark 22
-console.log(B()); //undefined undefined
-                  //undefined : console.log(name,age)에서 또 undefined이기 때문
+console.log(B()); 
+//undefined undefined
+ //undefined : console.log(name,age)에서 또 undefined이기 때문
+
+ 
+            
 
 
