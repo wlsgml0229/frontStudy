@@ -9,13 +9,18 @@
 </head>
 <body>
     <div id="app">
+        <!--number로 타입지정하는법: 기존에는 숫자를 입력해도 String타입으로 받아짐
+        .number 추가하면 숫자는 number타입으로 구분해서 받아짐-->
+        <input type="text" v-model.number="message">
 
+        <div>{{ message }}</div>
+        <div>{{ typeof message }}</div>
     </div>
     <script>
         const vm = new Vue({
             el:'#app',
             data: {
-                
+                message: 'Hello'
             }
         })
     </script>

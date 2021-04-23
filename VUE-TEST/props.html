@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-comp :my-msg="message"></my-comp>
+    </div>
+    <script>
+        Vue.component('my-comp',{
+            template: '<div>{{myMsg}}</div>',
+            props: {
+                //데이터 타입 정의 가능
+                myMsg: {
+                    //배열로 타입을 구분해놓으면 둘다 적용가능
+                    type: [String, Number],
+                    required: true,
+                    //default:'Default' 디폴트값 설정가능
+                    //유효성 검사하려면 validator함수를 사용하게 된다.
+                    //false시 Invalid prop: custom validator check failed for prop  에러가 뜬다.
+                    validator: function (value) {
+                        return value === 'Hello'
+                    }
+                } 
+            }
+        })
+
+        const vm = new Vue({
+            el:'#app',
+            data: {
+                message: 'Hello'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -8,14 +8,27 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+    <style>
+        .box{
+            width: 200px;
+            height: 100px;
+            background: pink;
+        }
+    </style>
     <div id="app">
-
+        <button @click="toggle">Toggle</button>
+        <div v-show="show" class="box"></div>
     </div>
     <script>
         const vm = new Vue({
-            el:'#app',
+            el: '#app',
             data: {
-                
+                show: true
+            },
+            methods: {
+                toggle () {
+                    this.show = !this.show
+                }
             }
         })
     </script>

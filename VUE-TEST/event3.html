@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--이벤트 keydown.enter추가-->
+        <!-- 키를합성할때 체이닝이 가능하다 .이 연결해주는 역할을 한다 아래는 컨트롤과 엔터를 같이눌러야할때 쓴다.-->
+        <input type ="text" @keydown.ctrl.enter="keydownHandler">
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data: {
+                
+            },
+            methods: {
+                // keydownHandler (e) {
+                //     if(e.keyCode === 13){
+                //         console.log('Done!!!')
+                //     }
+                // },
+                keydownHandler (e) {  
+                    console.log('Done!!!!!',e.target.value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--
+            컴포넌트 사이에 포함된 내용은 렌더링 되지않는다
+            하지만 슬롯을 사용하면 컴포넌트 사이에 내용을 끼울수 있다.
+            슬롯네임을 지정해서 해당위치에 띄워줄 수 있다.
+        -->
+      <my-comp>
+         <div slot="slot1">Hello Slot!</div>
+         <!--input요소는 이름을 지정해주지 않아서 그냥 slot으로 들어간다.-->
+         <input type ="text">
+    </my-comp>
+    </div>
+    <script>
+        Vue.component('my-comp',{
+            //슬롯 부분 전체가 해당하는 컨텐츠로 대체된다. 컨텐츠로 제공되지 않으면, 슬롯안에있는 내용이 그대로 적용된다.
+            template: '<div><slot></slot><slot name="slot1"></slot></div>',
+            methods : {
+            }
+        })
+
+        const vm = new Vue({
+            el:'#app',
+
+        })
+    </script>
+</body>
+</html>

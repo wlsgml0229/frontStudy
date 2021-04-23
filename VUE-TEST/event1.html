@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--clickMethod 뒤에 선언하는 () 생략이 가능한데 , 투두의 타이틀을 인자로 넣어주기 위해 괄호에 표시-->
+        <!--특정한 함수에다가 원하는 인수를 넣고싶으면 삽입가능하다-->
+        <!--개별적인 클래스네임을 주고싶으면 아래와 같이 바인딩을 추가하여 index + 1해서 개별적인 클래스 네임을 찍어줄 수 있다.-->
+        <!--동일한 이벤트에서 여러개 함수를 수행 하고싶은 경우 : @click="함수1; 함수2" 와 같이 자바스크립트 표현식과 같다. 이때 괄호를 생략하면 안된다!-->
+        <li v-for ="(todo,index) in todos" :key="index" :class="'item-'+ (index+1)" @click="clickMethod1(todo.title, $event); clickMethod2()">
+            {{todo.title}}
+        </li>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data: {
+                todos: [
+                    {title: '아침'},
+                    {title: '점심'},
+                    {title: '저녁'}
+                ]
+            },
+            methods: {
+                clickMethod1(title, event) {
+                    console.log(title)
+                    console.log(event.currentTarget.className)
+                },
+                clickMethod2 () {
+                    console.log('click2')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

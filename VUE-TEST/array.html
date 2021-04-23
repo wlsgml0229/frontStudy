@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul class="todos">
+            <button @click="pushTodo">Push</button>
+            <li v-for="(todo, index) in todos" v-bind:key="index">
+                {{todo.title}}
+            </li>
+        </ul>
+        <button @click="addHomepage">addHomepage property</button>
+        <ul class = "heropy">
+            <!--객체데이터를 v-for할때는 인덱스는 세번째 요소로 쓰인다-->
+            <li v-for="(value,key,index) in heropy" v-bind:key="index">
+                {{value}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data: {
+                todos:[
+                    {title: '아침'},
+                    {title: '점심'},
+                    {title: '저녁'}
+                ],
+                heropy : {
+                    name: 'jin',
+                    age:21,
+                    hompage:'',
+                    email:''
+                }
+            },
+            methods: {
+                pushTodo () {
+                    //this.todos[3] = { title: '야식' }
+                    // this.todos.push({title: '야식'})
+                    //뷰의 set 방법 사용하기 , 아래두개는 동일한 방법 
+                    // Vue.set(this.todos , 3 , {title: '야식ㄴ'})
+                    this.$set(this.todos , 3 , {title: '야식'})
+                },
+                addHomepage () {
+                    this.$set(this.heropy, 'homepage', 'heropy.blog')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

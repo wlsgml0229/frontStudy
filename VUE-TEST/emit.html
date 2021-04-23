@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--v-on:받은 이벤트 이름명 ="부모컴포넌트에서 특정한 메소드 실행이름"-->
+      <my-comp :my-msg="message" @my-event="updateMsg"></my-comp>
+    </div>
+    <script>
+        Vue.component('my-comp',{
+            template: '<div @click="updateMsg">{{myMsg}}</div>',
+            props: {
+                myMsg: String
+            },
+            methods : {
+                updateMsg() {
+                    //직접적으로 바꾸게 되면 에러발생함
+                    // this.myMsg ='Good'
+                    //$emit메소드를 통해서 부모요소에 이벤트를 전달하게되고, 전달할 값을 같이 넣어준다.
+                    this.$emit('my-event','Good')
+                }
+            }
+        })
+
+        const vm = new Vue({
+            el:'#app',
+            data(){
+                return {
+                    message: 'Hello'
+                }
+                
+            },
+            methods: {
+                updateMsg (value) {
+                    //자식컴포넌트에서 이벤트 보낼때 받은 값을 인자로 넣는다.
+                    //부모컴포넌트에 있는 값을 바꾸게 설정
+                  this.message = value
+                }
+            }
+        })
+    </script>
+</body>
+</html>

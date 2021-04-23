@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <my-component/>
+    </div>
+    <div id="app2">
+        <my-comp/>
+    </div>
+    <script>
+        const myComp = {
+            template: '<div class="me">{{message}}</div>',
+            data: function () {
+                return {
+                    message: 'Hello Vue'
+                }
+            }
+        }
+
+        //컴포넌트를 만들때 두개의 단어 이상으로 이름을 정하고, 두 단어를 조합할때는 케밥케이스로 문법을 작성하는게 중요함!
+        //전역등록 방법 
+        // Vue.component('my-component',{
+        //     template: '<div class="me">{{message}}</div>',
+        //     data: function () {
+        //         return {
+        //             message: 'Hello Vue'
+        //         }
+        //     }
+        // })
+
+        const vm1 = new Vue({
+            el:'#app1',
+            components : {
+                    'my-component' : myComp
+            }
+        })
+        const vm2 = new Vue({
+            el: '#app2',
+            components : {
+                    'my-comp' : myComp
+            }
+        })
+    </script>
+</body>
+</html>
