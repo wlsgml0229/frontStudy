@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--뷰연결-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id ="app">
+      <div v-for="todo in todos" v-bind:key="todo.id">
+        <!--체크박스의 경우 양방향 바인딩을 많이 사용한다-->
+        <input type="checkbox" v-model="todo.done">
+        <span>{{todo.title}}</span>
+      </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+              todos: [
+                  //id 속성이 없을 때 
+                  {title: '아침 먹기'},
+                  {title: '점심 먹기'},
+                  {title: '저녁 먹기'}
+              ]
+            },
+            //함수의 안에서 return을 받아야 사용 할 수있음 
+            //오리지널 데이터로 못하는것을 추가하면서 computed로 추가사용이 가능하다.
+            computed: {
+                computedTodos: function() {
+                    //원본데이터를 반복하고 가공된 데이터를 반환해주는 메소드 map()
+                    return this.todos.map((todo,index)=>{
+                        //이렇게 하면 직접 접근이여서 쓰지않음
+                        //todo.id = index
+                        //오브젝트를 합쳐서 새로운 객체를 반환할때 사용
+                        // return Object.assign({}, todo , {
+                        //     id: index +1
+                        // })
+
+                        return {
+                            ...todo,
+                            id: index + 1,
+                            done: false
+                        }
+                    })
+                    
+                }
+            },
+            methods: {
+                changeClassName() {
+                    this.className = 'active'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

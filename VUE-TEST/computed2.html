@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--뷰연결-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id ="app">
+    <!--반복하고싶을때 computed를 사용하면 유용하다. computed는 기존의 연산값을 사용하면서 캐싱된 결과만 사용한다. 위의경우는 연산을 총 3번 밑의경우는 연산을 총 1번 사용한것
+    조금더 효율적으로 화면에 있는 데이터를 출력할 수 있다.-->
+    <div>{{ reverseMsg() }}</div>
+    <div>{{ reverseMsg() }}</div>
+    <div>{{ reverseMsg() }}</div>
+    <div>====================</div>
+    <div>{{reversedMsg()}}</div>
+    <div>{{reversedMsg()}}</div>
+    <div>{{reversedMsg()}}</div>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue'
+            },
+            computed: {
+                reversedMsg() {
+                   return this.msg.split('').reverse().join('')
+               }
+            },
+            methods: {
+               reverseMsg() {
+                   return this.msg.split('').reverse().join('')
+               }
+            }
+        })
+    </script>
+</body>
+</html>

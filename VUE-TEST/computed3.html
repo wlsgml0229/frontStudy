@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--뷰연결-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id ="app">
+    <div>{{ reversedMsg }}</div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue'
+            },
+            computed: {
+                //아래 getter와 함수 와 같은 내용
+                // reversedMsg () {
+                //     return this.msg.split('').reverse().join('')
+                // }
+                //setter함수를 선언하지 않았을때는 데이터를 할당할 수 없다
+
+                reversedMsg : {
+                    get () {
+                        //Getter
+                        return this.msg.split('').reverse().join('')
+                    },
+                    set (value) {
+                        //Setter는 리턴할 필요가 없음
+                        //msg 를 갱신해줌
+                        //메시지가 갱신되니까 reversedMsg도 갱신됨
+                        //일반적으로 필요하지 않지만 computed 데이터의 값을 할당해야 하는경우가 가끔씩 생길건데, 
+                        //일반적으로 사용하는 문법말고 setter부분에 값이 할당 됐을때 어떻게 처리할지 정한다
+                        //getter는 return이 필요하고 setter는 리턴이 필요 없다.
+                        this.msg = value
+                    }
+                }
+            },
+            methods: {
+            }
+        })
+    </script>
+</body>
+</html>

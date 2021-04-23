@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--뷰연결-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id ="app">
+        <!--v-once 한번만 렌더링, 반응성을 신경쓰지 않음-->
+        <div v-once>{{msg}}</div>
+        <div>{{msg}}</div>
+        <div v-html="msg"></div>
+        <!--특정한 자바스크립트의 표현식이 사용가능하다.-->
+        <div>{{number + 2}}</div>
+        <div>{{new Date()}}</div>
+        <div>{{Math.round(1.7)}}</div>
+
+
+    </div>
+    <script>
+        const vm = new Vue({
+            //html요소와 연결
+            el: '#app',
+            data: {
+                //내가 입력한 html태그가 그냥 쓰면 문자로 인식되어 그대로 나오게 됨
+                //v-html디렉티브 사용하면 html코드가 적용됨
+              msg: 'Hello Vue!!!<br/> Good job',
+              number: 2
+            },
+            methods: {
+            
+            }
+        })
+    </script>
+</body>
+</html>

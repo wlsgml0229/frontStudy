@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+         <div>{{msg}}</div>
+         <div ref= "div"></div>
+     </div>
+    <script>
+            const vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'Hello VUe'
+                },
+
+                //뷰인스턴스가 생성되기 이전으로 값 인식이 안됨
+                beforeCreate (){
+                    console.log('beforeCreate!', this.msg)
+                },
+                //뷰 인스턴스가 생성된 후여서 값이 인식
+                created() {
+                    console.log('created!', this.msg)
+                },
+                //아직 html요소와 vue요소가 연결이 되기전이라 인식안됨
+                beforeMount() {
+                    console.log('beforeMount',this.$refs.div);
+                },
+                //연결되고 난 후 
+                mounted() {
+                    console.log('mounted',this.$refs.div);
+                },
+                //데이터가 변경되고나서 화면에 다시 렌더링 되기 직전에 실행
+                beforeUpdate() {
+                    console.log('beforeUpdate!' ,this.$refs.msg);
+                },
+                //데이터가 변경되고 난 후 
+                updated() {
+                    console.log('updated!',this.$refs.msg);
+                },
+                beforeDestroy () {
+                    console.log('beforedestroy!');
+                },
+                destroyed () {
+                    console.log('destroy!');
+                }
+
+            })
+    </script>
+</body>
+</html>

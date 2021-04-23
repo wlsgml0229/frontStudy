@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--뷰연결-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id ="app">
+       <div>{{msgA}}</div> 
+       <div>{{msgB}}</div>
+       <button v-on:click="changeMessage">Change</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            //html요소와 연결
+            el: '#app',
+            data: {
+                msgA: 'Message A',
+                msgB : ''
+            },
+            methods: {
+                changeMessage () {
+                    //this는 뷰인스턴스 자체를 가르킴
+                    this.msgA = 'Changed message A'
+                    //사용자가 클릭할떄 함수가 실행되면서 생성됨
+                    //data에 선언하지않으면, 반응성 데이터가 아님(화면갱신 안됨)
+                    this.msgB = 'Changed message B'
+                },
+                //계산된 데이터, 추가적으로 계산해서 렌더링, 
+                computed: {},
+                //데이터가 변경되면 함수를 실행하는
+                watch: {
+                    msgA(value) {
+                        console.log(value)
+                    }
+                }
+            }
+        })
+    
+        console.log(vm)
+    </script>
+</body>
+</html>
